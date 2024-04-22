@@ -1,0 +1,255 @@
+{% include "header.html" %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Owner Dashboard</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <style>
+        body {
+            
+    background-image: url('static/assets/img/back3.jpg');
+    /* You can add additional background properties here */
+    background-size: cover; /* Adjusts the background image to cover the entire viewport */
+    background-position: center; /* Centers the background image */
+
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-image 0.5s ease-in-out;
+        }
+
+        .dashboard-container {
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container,
+        .hotel-list-container {
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            border-radius: 5px;
+        }
+
+        .add-hotel-btn,
+        .delete-hotel-btn {
+            background-color: #28a745;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .hotel-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .hotel-item {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        .hotel-image {
+            max-width: 100%;
+            border-radius: 5px;
+        }
+
+        .carousel-inner {
+            border-radius: 5px;
+        }
+        .spacingg{
+            margin-top: 150px;
+            padding-top: 250px;
+        }
+    </style>
+</head>
+
+<body>
+    <main id="main">
+    <div class="spacingg">
+        <div class="row">
+            <div class="col-lg"></div>
+        </div>
+    </div>
+
+    <div class="container dashboard-container">
+        <h2 class="mb-4">Property Owner Dashboard</h2>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-container">
+                    <h3>Add New Property</h3>
+                    <form id="addHotelForm">
+                        <div class="form-group">
+                            <label for="hotelName">Property Name:</label>
+                            <input type="text" class="form-control" id="hotelName" placeholder="Enter hotel name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="location">Address :</label>
+                            <input type="text" class="form-control" id="location" placeholder="Enter Address" required>
+                        </div>
+                            <div class="form-group">
+                            <label for="location">City :</label>
+                            <input type="text" class="form-control" id="location" placeholder="Enter City" required>
+                        </div>
+                                <div class="form-group">
+                            <label for="location">State :</label>
+                            <input type="text" class="form-control" id="location" placeholder="Enter State" required>
+                        </div>  <div class="form-group">
+                            <label for="location">Property Description:</label>
+                            <input type="text" class="form-control" id="location" placeholder="Enter Description" required>
+                        </div>
+                              <div class="form-group"> 
+             
+            <input type="file" class="form-control" 
+                   id="inputGroupFile03"> 
+        </div> 
+        <div class="form-group"> 
+            <input type="file" class="form-control" 
+                   id="inputGroupFile04"> 
+               
+        </div> 
+                  <div class="form-group"> 
+            <select class="form-select" id="inputGroupSelect01"> 
+                <option selected>Select type </option> 
+                <option value="1">house</option> 
+                <option value="2">flat </option> 
+                <option value="3">villa</option> 
+                <option value="4">Bungalow</option> 
+                <option value="5">Cottage</option> 
+                <option value="6">Penthouse</option> 
+            </select> 
+            <label class="input-group-text text-bg-success" 
+                   for="inputGroupSelect01"> 
+                Select type of property:
+            </label> 
+        </div> 
+          
+                        <button type="submit" class="btn add-hotel-btn btn-block">Add Poperty</button>
+                    </form>
+                </div>
+            </div>
+
+          <div class="col-md-6">
+                <div class="hotel-list-container">
+                    <h3>Property List</h3>
+                    <ul id="hotelList" class="hotel-list">
+                        Hotel items will be dynamically added here 
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <!-- Bootstrap JS and Popper.js (for Bootstrap)  -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const addHotelForm = document.getElementById("addHotelForm");
+            const hotelList = document.getElementById("hotelList");
+
+            addHotelForm.addEventListener("submit", function(event) {
+                event.preventDefault();
+
+                const hotelName = document.getElementById("hotelName").value;
+                const location = document.getElementById("location").value;
+                const images = document.getElementById("images").value.split(',');
+
+                if (hotelName && location && images.length > 0) {
+                    addHotelItem(hotelName, location, images);
+                    addHotelForm.reset();
+                }
+            });
+
+            function addHotelItem(name, location, images) {
+                const listItem = document.createElement("li");
+                listItem.className = "hotel-item";
+
+                const card = document.createElement("div");
+                card.className = "card";
+
+                const carousel = document.createElement("div");
+                carousel.className = "carousel slide";
+                carousel.setAttribute("data-ride", "carousel");
+
+                const carouselInner = document.createElement("div");
+                carouselInner.className = "carousel-inner";
+
+                images.forEach((image, index) => {
+                    const item = document.createElement("div");
+                    item.className = `carousel-item${index === 0 ? ' active' : ''}`;
+
+                    const imageElement = document.createElement("img");
+                    imageElement.src = image.trim();
+                    imageElement.alt = `${name} Image ${index + 1}`;
+                    imageElement.className = "d-block w-100 hotel-image";
+
+                    item.appendChild(imageElement);
+                    carouselInner.appendChild(item);
+                });
+
+                 carousel.appendChild(carouselInner);
+
+                const cardBody = document.createElement("div");
+                cardBody.className = "card-body";
+
+                const cardTitle = document.createElement("h5");
+                cardTitle.className = "card-title";
+                cardTitle.textContent = name;
+
+                const cardText = document.createElement("p");
+                cardText.className = "card-text";
+                cardText.textContent = `Location: ${location}`;
+
+                cardBody.appendChild(cardTitle);
+                cardBody.appendChild(cardText);
+
+                card.appendChild(carousel);
+                card.appendChild(cardBody);
+
+                listItem.appendChild(card);
+                hotelList.appendChild(listItem);
+            } 
+
+            // Change background image every 10 seconds
+            setInterval(function() {
+                document.body.style.backgroundImage = `url('https://source.unsplash.com/1920x1080/?city,architecture&t=${new Date().getTime()}')`;
+            }, 10000);
+        });
+    </script>
+    <!-- In your HTML template or base template -->
+<script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-auth.js"></script>
+
+   </main>
+</body>
+
+</html>
+{% endblock  %}
+

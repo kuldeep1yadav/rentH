@@ -1,0 +1,571 @@
+
+{% load static %}
+
+{%block content%}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>rentH </title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+     <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
+     <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/animate.css/animate.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'assets/css/style.css'%}" rel="stylesheet"><style>
+    body {
+        background-image: url('static/assets/img/back3.jpg');
+        /* You can add additional background properties here */
+        background-size: cover; /* Adjusts the background image to cover the entire viewport */
+        background-position: center; /* Centers the background image */
+    }
+    
+    </style>
+
+
+</head>
+
+<body>
+
+  <!-- ======= Property Search Section ======= -->
+  <div class="click-closed"></div>
+  <!--/ Form Search Star /-->
+  <div class="box-collapse">
+    <div class="title-box-d">
+      <h3 class="title-d">Search Property</h3>
+    </div>
+    <span class="close-box-collapse right-boxed bi bi-x"></span>
+    <div class="box-collapse-wrap form">
+      <form class="form-a">
+        <div class="row">
+          <div class="col-md-12 mb-2">
+            <div class="form-group">
+              <label class="pb-2" for="Type">Keyword</label>
+              <input type="text" class="form-control form-control-lg form-control-a" placeholder="Keyword">
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group mt-3">
+              <label class="pb-2" for="Type">Type</label>
+              <select class="form-control form-select form-control-a" id="Type">
+                <option>All Type</option>
+                <option>Penthouse</option>
+                <option>Cottage</option>
+                <option>Bungalow</option>
+                <option>flat</option>
+                <option>villa</option>
+                <option>house</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group mt-3">
+              <label class="pb-2" for="city">City</label>
+              <select class="form-control form-select form-control-a" id="city">
+                <option>All City</option>
+                <option>Hyderabad</option>
+                <option>Bangalore</option>
+                <option>New Delhi</option>
+                <option>Chandigarh</option>
+                <option>Lucknow</option>
+                <option>Ahmedabad</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group mt-3">
+              <label class="pb-2" for="bedrooms">Bedrooms</label>
+              <select class="form-control form-select form-control-a" id="bedrooms">
+                <option>Any</option>
+                <option>1bhk</option>
+                <option>2bhk</option>
+                <option>3bhk</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group mt-3">
+              <label class="pb-2" for="garages">parking</label>
+              <select class="form-control form-select form-control-a" id="garages">
+                <option>Any</option>
+                <option>1</option>
+                <option>2</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group mt-3">
+              <label class="pb-2" for="bathrooms">Bathrooms</label>
+              <select class="form-control form-select form-control-a" id="bathrooms">
+                <option>Any</option>
+                <option>01</option>
+                <option>02</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group mt-3">
+              <label class="pb-2" for="price">Min Price</label>
+              <select class="form-control form-select form-control-a" id="price">
+                <option>Unlimite</option>
+                <option>₹ 50,000</option>
+                <option>₹ 100,000</option>
+                <option>₹ 150,000</option>
+                <option>₹ 200,000</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <button type="submit" class="btn btn-b">Search Property</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div><!-- End Property Search Section -->
+
+  <!-- ======= Header/Navbar ======= -->
+  <div>
+  <nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
+    <div class="container">
+      <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDefault" aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <a class="navbar-brand text-brand" href="{% url 'index' %}"><img src="static/assets/img/logo.jpg" alt="Logo" width="100" height="50">rent<span class="color-b">H</span></a>
+
+      <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
+        <ul class="navbar-nav">
+
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'index' %}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="{% url 'about' %}">about</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " href="{% url 'hotelowner' %}">owner dashboard</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link " href="{% url 'property' %}">Property</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link " href="{% url 'blog' %}">Blog</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Login</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item " href="{% url 'ologin' %}">Owner Login </a>
+              <a class="dropdown-item " href="{% url 'ownerregister' %}">Owner Register </a>
+              <a class="dropdown-item " href="{% url 'login' %}">User Login</a>
+              <a class="dropdown-item " href="{% url 'register' %}">User Register </a>
+              <a class="dropdown-item " href=""> </a>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <button type="button" class="btn btn-b-n navbar-toggle-box navbar-toggle-box-collapse" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01">
+        <i class="bi bi-search"></i>
+      </button>
+
+    </div>
+  </nav>
+</div>
+<!-- End Header/Navbar -->
+
+
+<main id="main">
+
+    <!-- ======= Intro Single ======= -->
+    <section class="intro-single">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-lg-8">
+            <div class="title-single-box">
+              <h1 class="title-single">property detail</h1>
+              <span class="color-text-a">by rentH</span>
+            </div>
+          </div>
+          <div class="col-md-12 col-lg-4">
+            <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="#">Home</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                  property detail
+                </li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Intro Single-->
+
+    <!-- ======= Blog Single ======= -->
+    <section class="news-single nav-arrow-b">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="news-img-box">
+              <img src="{% static 'assets/img/slide-3.jpg' %}" alt="" class="img-fluid">
+            </div>
+          </div>
+          <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+            <div class="post-information">
+              <ul class="list-inline text-center color-a">
+                <li class="list-inline-item mr-2">
+                  <strong>Author: </strong>
+                  <span class="color-text-a">naksh</span>
+                </li>
+                <li class="list-inline-item mr-2">
+                  <strong>Category: </strong>
+                  <span class="color-text-a">Travel</span>
+                </li>
+                <li class="list-inline-item">
+                  <strong>Date:10 mar 2024 </strong>
+                  <span class="color-text-a"></span>
+                </li>
+              </ul>
+            </div>
+            <div class="post-content color-text-a">
+              <p class="post-intro">
+                
+RentH revolutionizes property booking with its user-friendly interface and efficient system. Catering to both users and property owners, RentH simplifies the booking process through its modern design and intuitive features.
+
+With just a few clicks, users can swiftly book their desired property, facilitated by the seamless interaction between renters and owners within the system. The inclusion of essential buttons such as "Submit," "Log in / Log out," and "Book" enhances user experience, ensuring accessibility for a diverse audience.
+              </p>
+              <!-- <p>
+                Proin eget tortor risus. Donec sollicitudin molestie malesuada. Cras ultricies ligula sed magna dictum
+                porta. Pellentesque
+                in ipsum id orci porta dapibus. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet
+                dui. Lorem ipsum dolor sit amet.
+              </p> -->
+              <!-- <blockquote class="blockquote">
+              <p>
+                
+                Pellentesque in ipsum id orci porta dapibus. Curabitur non nulla sit amet nisl tempus convallis quis ac
+                lectus. Curabitur
+                non nulla sit amet nisl tempus convallis quis ac lectus. Proin eget tortor risus. Curabitur non
+                nulla sit amet nisl tempus convallis quis ac lectus. Donec rutrum congue leo eget malesuada.
+                Quisque velit nisi.
+              </p> -->
+              </blockquote>
+              <blockquote class="blockquote">
+                <p class="mb-4">"RentH offers a seamless booking experience with its user-friendly interface. Efficient and reliable, it simplifies property rentals effortlessly."</p>
+                <footer class="blockquote-footer">
+                  <strong>Kd</strong>
+                  <cite title="Source Title">Author</cite>
+                </footer>
+              
+              <!-- <p>
+                Donec rutrum congue leo eget malesuada. Curabitur aliquet quam id dui posuere blandit. Vivamus suscipit
+                tortor eget felis
+                porttitor volutpat. Quisque velit nisi, pretium ut lacinia in, elementum id enim.
+              </p> -->
+            </blockquote>
+            </div>
+            <div class="post-footer">
+              <div class="post-share">
+                <span>Share: </span>
+                <ul class="list-inline socials">
+                  <li class="list-inline-item">
+                    <a href="#">
+                      <i class="bi bi-facebook" aria-hidden="true"></i>
+                    </a>
+                  </li>
+                  <li class="list-inline-item">
+                    <a href="#">
+                      <i class="bi bi-twitter" aria-hidden="true"></i>
+                    </a>
+                  </li>
+                  <li class="list-inline-item">
+                    <a href="#">
+                      <i class="bi bi-instagram" aria-hidden="true"></i>
+                    </a>
+                  </li>
+                  <li class="list-inline-item">
+                    <a href="#">
+                      <i class="bi bi-linkedin" aria-hidden="true"></i>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-10 offset-md-1 col-lg-10 offset-lg-1">
+            <div class="title-box-d">
+              <h3 class="title-d">Comments (4)</h3>
+            </div>
+            <div class="box-comments">
+              <ul class="list-comments">
+                <li>
+                  <div class="comment-avatar">
+                    <img src="{% static 'assets/img/author-2.jpg' %}" alt="">
+                  </div>
+                  <div class="comment-details">
+                    <h4 class="comment-author">itisha</h4>
+                    <span>10 mar 2024</span>
+                    <p class="comment-description"> <h6>
+                    
+"This property on RentH exceeded my expectations! The booking process was seamless, and the owner was responsive and accommodating. Highly recommended!"</h6>
+                    </p>
+                    <a href="3">Reply</a>
+                  </div>
+                </li>
+                <li class="comment-children">
+                  <div class="comment-avatar">
+                    <img src="{% static 'assets/img/author-1.jpg' %}" alt="">
+                  </div>
+                  <div class="comment-details">
+                    <h4 class="comment-author">prince </h4>
+                    <span>10 mar 2024</span>
+                    <p class="comment-description"><h6>
+                      "I had a fantastic experience renting this property through RentH. The amenities were top-notch, and the location was perfect. Will definitely book again!" 
+                      </h6>
+                    </p>
+                    <a href="3">Reply</a>
+                  </div>
+                </li>
+                <li>
+                  <div class="comment-avatar">
+                    <img src="{% static 'assets/img/author-2.jpg' %}" alt="">
+                  </div>
+                  <div class="comment-details">
+                    <h4 class="comment-author">itisha </h4>
+                    <span>10 mar 2024</span>
+                    <p class="comment-description"><h6>
+                      "RentH made finding and booking this property a breeze. The interface is intuitive, and the communication with the owner was smooth. Highly satisfied!"</h6>
+                    </p>
+                    <a href="3">Reply</a>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="form-comments">
+              <div class="title-box-d">
+                <h3 class="title-d"> Leave a Reply</h3>
+              </div>
+              <form class="form-a">
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <div class="form-group">
+                      <label for="inputName" ><h3>Enter name </h3></label>
+                      <input type="text" class="form-control form-control-lg form-control-a" id="inputName" placeholder="Name *" required>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <div class="form-group">
+                      <label for="inputEmail1"><h3>Enter email</h3></label>
+                      <input type="email" class="form-control form-control-lg form-control-a" id="inputEmail1" placeholder="Email *" required>
+                    </div>
+                  </div>
+                  <div class="col-md-12 mb-3">
+                    <div class="form-group">
+                      <label for="inputUrl"><h3>Enter website</h3></label>
+                      <input type="url" class="form-control form-control-lg form-control-a" id="inputUrl" placeholder="Website">
+                    </div>
+                  </div>
+                  <div class="col-md-12 mb-3">
+                    <div class="form-group">
+                      <label for="textMessage"><h3>Enter message</h3></label>
+                      <textarea id="textMessage" class="form-control" placeholder="Comment *" name="message" cols="45" rows="8" required></textarea>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <button type="submit" class="btn btn-a">Send Message</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Blog Single-->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <section class="section-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-4">
+          <div class="widget-a">
+            <div class="w-header-a">
+              <h3 class="w-title-a text-brand">rentH</h3>
+            </div>
+            <div class="w-body-a">
+              <p class="w-text-a color-text-a">
+                RentH revolutionizes property booking with its user-friendly interface and efficient system. Catering to both users and property owners, RentH simplifies the booking process through its modern design and intuitive features.
+              </p>
+            </div>
+            <div class="w-footer-a">
+              <ul class="list-unstyled">
+                <li class="color-a">
+                  <span class="color-text-a">Phone .</span> rentH@gmail.com
+                </li>
+                <li class="color-a">
+                  <span class="color-text-a">Email .</span> +91 356 945234
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-4 section-md-t3">
+          <div class="widget-a">
+            <div class="w-header-a">
+              <h3 class="w-title-a text-brand">The Company</h3>
+            </div>
+            <div class="w-body-a">
+              <div class="w-body-a">
+                <ul class="list-unstyled">
+                  <li class="item-list-a">
+                    <i class="bi bi-chevron-right"></i> <a href="#">Site Map</a>
+                  </li>
+                  <li class="item-list-a">
+                    <i class="bi bi-chevron-right"></i> <a href="#">Legal</a>
+                  </li>
+                  <li class="item-list-a">
+                    <i class="bi bi-chevron-right"></i> <a href="#">Agent Admin</a>
+                  </li>
+                  <li class="item-list-a">
+                    <i class="bi bi-chevron-right"></i> <a href="#">Careers</a>
+                  </li>
+                  <li class="item-list-a">
+                    <i class="bi bi-chevron-right"></i> <a href="#">Affiliate</a>
+                  </li>
+                  <li class="item-list-a">
+                    <i class="bi bi-chevron-right"></i> <a href="#">Privacy Policy</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-4 section-md-t3">
+          <div class="widget-a">
+            <div class="w-header-a">
+              <h3 class="w-title-a text-brand">International sites</h3>
+            </div>
+            <div class="w-body-a">
+              <ul class="list-unstyled">
+                <li class="item-list-a">
+                  <i class="bi bi-chevron-right"></i> <a href="#">Venezuela</a>
+                </li>
+                <li class="item-list-a">
+                  <i class="bi bi-chevron-right"></i> <a href="#">China</a>
+                </li>
+                <li class="item-list-a">
+                  <i class="bi bi-chevron-right"></i> <a href="#">Hong Kong</a>
+                </li>
+                <li class="item-list-a">
+                  <i class="bi bi-chevron-right"></i> <a href="#">Argentina</a>
+                </li>
+                <li class="item-list-a">
+                  <i class="bi bi-chevron-right"></i> <a href="#">Singapore</a>
+                </li>
+                <li class="item-list-a">
+                  <i class="bi bi-chevron-right"></i> <a href="#">Philippines</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <nav class="nav-footer">
+            <ul class="list-inline">
+              <li class="list-inline-item">
+                <a href="#">Home</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">About</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">Property</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">Blog</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">Contact</a>
+              </li>
+            </ul>
+          </nav>
+          <div class="socials-a">
+            <ul class="list-inline">
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="bi bi-facebook" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="bi bi-twitter" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="bi bi-instagram" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="bi bi-linkedin" aria-hidden="true"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="copyright-footer">
+            <p class="copyright color-text-a">
+              &copy; Copyright
+              <span class="color-a">rentH</span> All Rights Reserved.
+            </p>
+          </div>
+ 
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer><!-- End  Footer -->
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'assets/js/main.js' %}"></script>
+
+</body>
+
+</html>
+{%endblock%}
